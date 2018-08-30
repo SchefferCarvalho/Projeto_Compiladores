@@ -18,18 +18,16 @@ LCURLY : '{';
 RCURLY : '}';
 LCHAVE : '[';
 RCHAVE : ']';
+IF : 'if';
 
-ID  :
-  ('a'..'z' | 'A'..'Z')+;
-
+ID : ('_'|'a'..'z'|'A'..'Z')(CHARALFNUM|'_')*;
 CHAR : '\'' (ESC|ASCII) '\'';
 STRING : '"' (ESC|ASCII)* '"';
 
-fragment
-ESC :  '\\' ('n'|'"'|'\\'|'t'|'r');
-
-fragment
-ASCII : [a-zA-Z0-9 !#-&(-/:-@^-`{-~];
+fragment ESC :  '\\' ('n'|'"'|'\\'|'t'|'r');
+fragment ASCII : (CHARALFNUM|ESPEC);
+fragment ESPEC : ('!'|'#'..'&'|'('..'/'|':'..'@'|'^'..'`'|'{'..'~'|'['|']');
+fragment CHARALFNUM : ('a'..'z'|'A'..'Z'|'0'..'9');
 
 WS_ : (' ' | '\n' ) -> skip;
 
