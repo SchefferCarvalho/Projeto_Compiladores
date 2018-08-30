@@ -31,6 +31,9 @@ class Main {
 
 		        			switch (token.getType())
 		        			{
+							case DecafLexer.INTLITERAL:
+								type = " INTLITERAL";
+								break;
 							case DecafLexer.IF:
 								type = "";
 								break;
