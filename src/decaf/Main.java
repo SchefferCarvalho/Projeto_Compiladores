@@ -34,11 +34,8 @@ class Main {
 							case DecafLexer.INTLITERAL:
 								type = " INTLITERAL";
 								break;
-							case DecafLexer.IF:
-								type = "";
-								break;
-							case DecafLexer.OP:
-								type = "";
+							case DecafLexer.BOOLEANLITERAL:
+								type = " BOOLEANLITERAL";
 								break;
 		        			case DecafLexer.CHAR:
 								type = " CHARLITERAL";

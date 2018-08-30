@@ -18,22 +18,38 @@ LCURLY : '{';
 RCURLY : '}';
 LCHAVE : '[';
 RCHAVE : ']';
-
 IF : 'if';
+BOOLEAN : 'boolean';
+CALLOUT : 'callout';
+CLASS : 'class';
+ELSE : 'else';
+INT : 'int';
+RETURN : 'return';
+VOID : 'void';
+FOR : 'for';
+BREAK : 'break';
+CONTINUE : 'continue';
 
-ID : ('_'|CHARAC)(CHARAC|INT|'_')*;
 CHAR : '\'' (ESC|ASCII) '\'';
+BOOLEANLITERAL : (TYPEBOOLEAN);
 STRING : '"'(ESC|ASCII|ESPEC)*'"';
-INTLITERAL : '-'?(INT)+;
+INTLITERAL : (NUM)+;
 OP : (OPER);
+ID : ('_'|CHARAC)(CHARAC|NUM|'_')*;
 
 fragment ESC :  '\\' ('n'|'"'|'\\'|'t'|'r'|'\'');
-fragment ASCII : (CHARAC|INT|ESPEC);
+fragment ASCII : (CHARAC|NUM|ESPEC);
 fragment ESPEC : (' '|'!'|'#'..'&'|'('..'/'|':'..'@'|'^'..'`'|'{'..'~'|'['|']');
 fragment CHARAC : ('a'..'z'|'A'..'Z');
-fragment INT : ('0'..'9');
-fragment OPER : ('+'|'-'|'*'|'<'|'>'|'<='|'>='|'!='|'&&'|'||'|'/');
+fragment NUM : ('0'..'9');
+fragment OPER : ('+'|'-'|'*'|'<'|'>'|'<='|'>='|'!='|'&&'|'||'|'/'|'='|'==');
+fragment TYPEBOOLEAN : ('true'|'false');
 
-WS_ : (' ' | '\n' ) -> skip;
+WS_ : (' '|'\n'|'\t') -> skip;
 
 SL_COMMENT : '//' (~'\n')* '\n' -> skip;
+
+VIRGULA : ',';
+PONTOVIR:';';
+RPARENT : '(';
+LPARENT : ')';
