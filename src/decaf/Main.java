@@ -31,11 +31,12 @@ class Main {
 
 		        			switch (token.getType())
 		        			{
-							case DecafLexer.INTLITERAL:
-								type = " INTLITERAL";
-								break;
 							case DecafLexer.BOOLEANLITERAL:
 								type = " BOOLEANLITERAL";
+								break;
+							case DecafLexer.INTLITERAL:
+							case DecafLexer.HEXA:
+								type = " INTLITERAL";
 								break;
 		        			case DecafLexer.CHAR:
 								type = " CHARLITERAL";
