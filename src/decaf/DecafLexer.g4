@@ -18,6 +18,10 @@ LCURLY : '{';
 RCURLY : '}';
 LCHAVE : '[';
 RCHAVE : ']';
+VIRGULA : ',';
+PONTOVIR:';';
+RPARENT : '(';
+LPARENT : ')';
 IF : 'if';
 BOOLEAN : 'boolean';
 CALLOUT : 'callout';
@@ -48,8 +52,3 @@ fragment TYPEBOOLEAN : ('true'|'false');
 WS_ : (' '|'\n'|'\t') -> skip;
 
 SL_COMMENT : '//' (~'\n')* '\n' -> skip;
-
-VIRGULA : ',';
-PONTOVIR:';';
-RPARENT : '(';
-LPARENT : ')';
