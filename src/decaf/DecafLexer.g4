@@ -16,12 +16,12 @@ tokens
 
 LCURLY : '{';
 RCURLY : '}';
-LCHAVE : '[';
-RCHAVE : ']';
+LBRACKT : '[';
+RBRACKT : ']';
 VIRGULA : ',';
 PONTOVIR:';';
-RPARENT : '(';
-LPARENT : ')';
+LPARENT : '(';
+RPARENT : ')';
 MAIS : '+';
 MENOS : '-';
 MULTIPLICA : '*'; 
