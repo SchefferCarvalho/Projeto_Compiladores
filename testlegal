@@ -1,0 +1,19 @@
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-01
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-02
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-03
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-04
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-05
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-06
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-07
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-08
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-10
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-11
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-12
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-13
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-14
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-15
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-16
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-17
+java -jar dist/Compiler.jar -target parser -debug ../parser/legal-18
+
+

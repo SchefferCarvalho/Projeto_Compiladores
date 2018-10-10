@@ -1,0 +1,20 @@
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-01
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-02
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-03
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-04
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-05
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-06
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-07
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-08
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-10
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-11
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-12
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-13
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-14
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-15
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-16
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-17
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-18
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-19
+java -jar dist/Compiler.jar -target parser -debug ../parser/illegal-20
+
