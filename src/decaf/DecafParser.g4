@@ -12,22 +12,26 @@ options
 
 program: CLASS PROGRAM LCURLY field_decl* method_decl* RCURLY;
 
-field_decl: (type id (VIRGULA type id)* 
-| type id LBRACKT int_literal RBRACKT (VIRGULA type id LBRACKT int_literal RBRACKT)* ) 
+iddec: type ID;
+
+field_decl: (type ID (VIRGULA iddec)* 
+| type ID LBRACKT int_literal RBRACKT (VIRGULA iddec LBRACKT int_literal RBRACKT)* ) 
 PONTOVIR; 
 
-method_decl: (type | VOID) method_name LPARENT (type id (VIRGULA type id)*)? RPARENT block;
+method_decl: (type | VOID) method_name LPARENT (type ID (VIRGULA iddec)*)? RPARENT block;
 
 block: LCURLY var_decl* statement* RCURLY;
 
-var_decl: type id (VIRGULA id)* PONTOVIR; 
+var_decl: type ID (variaveis)* PONTOVIR; 
+
+variaveis: VIRGULA ID;
 
 type: INT|BOOLEAN;
 
 statement: location assign_op expr PONTOVIR
 | method_call PONTOVIR
 | IF LPARENT expr RPARENT block (ELSE block)?
-| FOR id ATRIBUICAO expr VIRGULA expr block
+| FOR ID ATRIBUICAO expr VIRGULA expr block
 | RETURN expr? PONTOVIR
 | BREAK PONTOVIR
 | CONTINUE PONTOVIR
@@ -38,9 +42,9 @@ assign_op: ATRIBUICAO | ATRIBUICAOPLUS | ATRIBUICAOMINUS;
 method_call: method_name LPARENT (expr (VIRGULA expr)*)? RPARENT
 | CALLOUT LPARENT string_literal (VIRGULA callout_agr (VIRGULA callout_agr)*)? RPARENT;
 
-method_name: id;
+method_name: ID;
 
-location: id | id LBRACKT expr RBRACKT;
+location: ID | ID LBRACKT expr RBRACKT;
 
 expr: location | method_call | literal | expr bin_op expr
 | MENOS expr | EXCL expr | LPARENT expr RPARENT;
@@ -58,16 +62,6 @@ eq_op: IGUAL | DIFERENTE;
 cond_op: AND | OR;
 
 literal: int_literal | char_literal | bool_literal;
-
-id: ID;
-
-alpha_num: alpha | digit;
-
-alpha: CHARAC;
-
-digit: NUM;
-
-hex_digit: digit | HEXLETRA;
 
 int_literal: decimal_literal | hex_literal;
 
