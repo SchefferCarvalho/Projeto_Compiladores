@@ -18,7 +18,7 @@ field_decl: (type ID (VIRGULA iddec)*
 | type ID LBRACKT int_literal RBRACKT (VIRGULA iddec LBRACKT int_literal RBRACKT)* ) 
 PONTOVIR; 
 
-method_decl: (type | VOID) method_name LPARENT (type ID (VIRGULA iddec)*)? RPARENT block;
+method_decl: (type | VOID) ID LPARENT (iddec (VIRGULA iddec)*)? RPARENT block;
 
 block: LCURLY var_decl* statement* RCURLY;
 
