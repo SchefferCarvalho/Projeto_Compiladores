@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -83,16 +84,16 @@ class Main {
 
                     //show AST in GUI
                     JFrame frame = new JFrame("Antlr AST");
-                    JPanel panel = new JPanel();
+					JPanel panel = new JPanel();
                     TreeViewer viewr = new TreeViewer(Arrays.asList(
-                            parser.getRuleNames()),tree);
+							parser.getRuleNames()),tree);
                     viewr.setScale(1.5);//scale a little
-                    panel.add(viewr);
+					panel.add(viewr);
                     frame.add(panel);
                     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                     frame.setSize(1920,1080);
-                    frame.setVisible(true);
-                }
+					frame.setVisible(true);
+				}
 
             } else if (CLI.target == CLI.INTER) {
 				// Primeiro faz o parsing da cadeia
@@ -125,8 +126,10 @@ class Main {
 					viewr.setScale(1.5);//scale a little
 					panel.add(viewr);
 					frame.add(panel);
+					JScrollPane scroll = new JScrollPane(panel);
+					frame.add(scroll);
 					frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-					frame.setSize(600,400);
+					frame.setSize(1920,1080);
 					frame.setVisible(true);
 				}
 
