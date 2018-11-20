@@ -10,7 +10,7 @@ options
   tokenVocab=DecafLexer;
 }
 
-program: CLASS PROGRAM LCURLY field_decl* method_decl* RCURLY;
+program: CLASS PROGRAM LCURLY field_decl * method_decl* RCURLY;
 
 iddec: type ID;
 
