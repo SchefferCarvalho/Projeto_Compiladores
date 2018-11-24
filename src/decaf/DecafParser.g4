@@ -15,8 +15,10 @@ program: CLASS PROGRAM LCURLY field_decl * method_decl* RCURLY;
 iddec: type ID;
 
 field_decl: (type ID (VIRGULA iddec)* 
-| type ID LBRACKT int_literal RBRACKT (VIRGULA iddec LBRACKT int_literal RBRACKT)* ) 
-PONTOVIR; 
+| type ID LBRACKT int_literal RBRACKT (VIRGULA iddec vect)* ) 
+PONTOVIR;
+
+vect: LBRACKT int_literal RBRACKT;
 
 method_decl: (type | VOID) ID LPARENT (iddec (VIRGULA iddec)*)? RPARENT block;
 
@@ -42,7 +44,7 @@ return_met: RETURN expr?;
 assign_op: ATRIBUICAO | ATRIBUICAOPLUS | ATRIBUICAOMINUS;
 
 method_call: method_name LPARENT (expr (VIRGULA expr)*)? RPARENT
-| CALLOUT LPARENT string_literal (VIRGULA callout_agr (VIRGULA callout_agr)*)? RPARENT;
+| CALLOUT LPARENT STRING (VIRGULA callout_agr (VIRGULA callout_agr)*)? RPARENT;
 
 method_name: ID;
 
@@ -51,7 +53,7 @@ location: ID | ID LBRACKT expr RBRACKT;
 expr: location | method_call | literal | expr bin_op expr
 | MENOS expr | EXCL expr | LPARENT expr RPARENT;
 
-callout_agr: expr | string_literal;
+callout_agr: expr | STRING;
 
 bin_op: arith_op | rel_op | eq_op | cond_op;
 
@@ -63,16 +65,6 @@ eq_op: IGUAL | DIFERENTE;
 
 cond_op: AND | OR;
 
-literal: int_literal | char_literal | bool_literal;
+literal: int_literal | CHAR | BOOLEANLITERAL;
 
-int_literal: decimal_literal | hex_literal;
-
-decimal_literal: INTLITERAL;
-
-hex_literal: HEXA;
-
-bool_literal: BOOLEANLITERAL;
-
-char_literal: CHAR;
-
-string_literal: STRING;
+int_literal: INTLITERAL | HEXA;

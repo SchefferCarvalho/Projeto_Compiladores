@@ -15,6 +15,7 @@ import org.antlr.v4.runtime.tree.ParseTreeProperty;
 
 import java.util.ArrayList;
 import java.util.List;
+import decaf.DecafParser.Int_literalContext;
 
 /**
  * This class defines basic symbols and scopes for Decaf language
@@ -36,6 +37,9 @@ public class DecafSymbolsAndScopes extends DecafParserBaseListener {
     public void exitProgram(DecafParser.ProgramContext ctx) {
         popScope();
         System.out.println(globals);
+        if (!globals.getSymbols().contains(new FunctionSymbol("main"))) {
+            this.error(ctx.CLASS().getSymbol(), "No main method declared");
+        }
     }
 
     @Override
@@ -74,6 +78,13 @@ public class DecafSymbolsAndScopes extends DecafParserBaseListener {
     @Override
     public void enterField_decl(DecafParser.Field_declContext ctx) {
         defineVar(ctx.type(), ctx.ID().getSymbol());
+        if (ctx.LBRACKT() != null) {
+            String index = ctx.int_literal().INTLITERAL().getText();
+            int numero = Integer.parseInt(index);
+            if (numero <= 0) {
+                this.error(ctx.int_literal().INTLITERAL().getSymbol(), "bad array size");
+            }
+        }
     }
 
     @Override
@@ -85,6 +96,17 @@ public class DecafSymbolsAndScopes extends DecafParserBaseListener {
         }
         if (var instanceof FunctionSymbol) {
             this.error(ctx.ID().getSymbol(), name + " is not a variable");
+        }
+    }
+
+    @Override
+    public void enterVect(DecafParser.VectContext ctx) {
+        if (ctx.LBRACKT() != null) {
+            String index = ctx.int_literal().INTLITERAL().getText();
+            int numero = Integer.parseInt(index);
+            if (numero <= 0) {
+                this.error(ctx.int_literal().INTLITERAL().getSymbol(), "bad array size");
+            }
         }
     }
 
@@ -130,7 +152,7 @@ public class DecafSymbolsAndScopes extends DecafParserBaseListener {
         try {
             defineVar(ctx.type(), ctx.ID().getSymbol());
         } catch (Exception e) {
-            this.error(ctx.ID().getSymbol(), "Exception - " + e);
+            this.error(ctx.ID().getSymbol(), "duplicated variable");
         }
     }
 
@@ -152,29 +174,18 @@ public class DecafSymbolsAndScopes extends DecafParserBaseListener {
             String name = ctx.location().ID().getSymbol().getText();
             Symbol var = currentScope.resolve(name);
             if (var == null) {
-                this.error(ctx.location().ID().getSymbol(), "identifier used before being declared");
+                this.error(ctx.location().ID().getSymbol(), "variable used before being declared");
             }
         }
     }
 
     @Override
-    public void exitStatement(DecafParser.StatementContext ctx) {
-
-    }
-
-    @Override
-    public void enterLocation(DecafParser.LocationContext ctx) {
-
-    }
-
-    @Override
-    public void exitLocation(DecafParser.LocationContext ctx) {
-
-    }
-
-    @Override
     public void enterVariaveis(DecafParser.VariaveisContext ctx) {
-        defineVar(ctx.ID().getSymbol());
+        try {
+            defineVar(ctx.ID().getSymbol());
+        } catch (Exception e) {
+            this.error(ctx.ID().getSymbol(), "duplicated variable");
+        }
     }
 
     @Override
