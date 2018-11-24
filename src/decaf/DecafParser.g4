@@ -32,10 +32,12 @@ statement: location assign_op expr PONTOVIR
 | method_call PONTOVIR
 | IF LPARENT expr RPARENT block (ELSE block)?
 | FOR ID ATRIBUICAO expr VIRGULA expr block
-| RETURN expr? PONTOVIR
+| return_met PONTOVIR
 | BREAK PONTOVIR
 | CONTINUE PONTOVIR
 | block;
+
+return_met: RETURN expr?;
 
 assign_op: ATRIBUICAO | ATRIBUICAOPLUS | ATRIBUICAOMINUS;
 
